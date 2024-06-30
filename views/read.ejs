@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="min-w-screen min-h-screen bg-gray-800 p-10 ">
+            <div class="mb-5">
+                <a href="/" class="text-teal-600">back to home</a>
+            </div>
+            <h1 class="text-white text-4xl mb-10">All Users</h1>
+                <% if(users.length>0){%> <% users.forEach((user)=>{ %>
+                    <div class="users flex flex-rows flex-wrap gap-5">
+                <div class="user w-72 p-4 rounded-lg bg-gray-900">
+                    <div
+                        class="h-72 w-full bg-gray-600 rounded-lg bg-contain bg-center"
+                    >
+                        <img
+                            src="<%= user.imageUrl %>"
+                            alt="image"
+                            class="w-full h-full object-cover object-center"
+                        />
+                    </div>
+                    <h3 class="text-white text-xl mt-3 tracking-tighter">
+                        <%=user.name %>
+                    </h3>
+                    <h5 class="text-zinc-500"><%=user.email %></h5>
+                    <div class="flex justify-between mt-10">
+                        <a href="" class="text-zinc-300">Edit User</a>
+                        <a href="/delete/<%= user._id%>" class="text-rose-600"
+                            >Delete User</a
+                        >
+                    </div>
+                </div>
+                    <%})%> 
+                    <%}else{%>
+                    <h3 class="text-xl text-blue-400">No Task Yet!</h3>
+                    <%}%>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
